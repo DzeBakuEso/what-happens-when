@@ -1,2 +1,2 @@
 #!/bin/bash
-(ls -la; ls -la ..; ls -la /boot)
+(echo "Contents of current directory:"; ls -la; echo ""; echo "Contents of parent directory:"; ls -la ..; echo ""; echo "Contents of /boot directory:"; ls -la /boot)
