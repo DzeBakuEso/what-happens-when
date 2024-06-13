@@ -1,0 +1,5 @@
+#!/bin/bash
+for file in *.html
+do
+    cp -n -u "$file" ../
+done
