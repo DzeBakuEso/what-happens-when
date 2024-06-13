@@ -1,2 +1,2 @@
 #!/bin/bash
-(echo "Contents directory:"$'\n'ls -la$'\n'echo ""$'\n'echo "Contents parent directory:"$'\n'ls -la ..$'\n'echo ""$'\n'echo "Contents of /boot directory:"$'\n'ls -la /boot)
+(echo "Contents crn directory:"$'\n'ls -la$'\n'echo ""$'\n'echo "Contents parent directory:"$'\n'ls -la ..$'\n'echo ""$'\n'echo "Contents /boot directory:"$'\n'ls -la /boot)
