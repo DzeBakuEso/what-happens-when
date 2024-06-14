@@ -1,0 +1,2 @@
+#!/bin/bash
+for entry in *; do if [ -d "$entry" ]; then chmod a+x "$entry"; fi; done
