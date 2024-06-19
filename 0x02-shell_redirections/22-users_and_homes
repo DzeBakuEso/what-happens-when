@@ -1,0 +1,2 @@
+#!/bin/bash
+grep -o '^[^:]*' /etc/passwd | while IFS= read -r user; do grep -E "^$user:" /etc/passwd | cut -d: -f1,6; done | sort -t: -k1
