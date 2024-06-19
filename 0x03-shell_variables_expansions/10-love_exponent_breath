@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Check if both variables are set
+if [[ -z "$BREATH" || -z "$LOVE" ]]; then
+    echo "ERROR: BREATH or LOVE environment variables are not set."
+    exit 1
+fi
+
+# Calculate the power using bash arithmetic
+result=$((BREATH ** LOVE))
+
+# Print the result
+echo $result
