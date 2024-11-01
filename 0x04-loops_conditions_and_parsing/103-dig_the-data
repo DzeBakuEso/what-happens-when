@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script parses Apache access logs, groups visitors by IP and HTTP status code, 
+# and displays the occurrence count, IP, and HTTP status code in descending order.
+
+# Use awk to process the log file, group by IP and HTTP status code, count occurrences,
+# and sort the results by occurrence number in descending order
+awk '{print $1, $9}' apache-access.log | \
+  sort | \
+  uniq -c | \
+  sort -nr | \
+  awk '{print $1, $2, $3}'
