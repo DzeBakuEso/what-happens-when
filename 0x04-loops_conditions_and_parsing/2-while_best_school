@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This Scripts displays "Best School using the while loop 10 times"
+
+a=1  # Initialize count
+while [ $a -le 10 ]; do  # Check if count is less than or equal to 10
+    echo "Best School"  # Display the message
+    ((a++))  # Increment count
+done
