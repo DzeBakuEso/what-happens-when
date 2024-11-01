@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script displays "bad luck" for the 4th iteration, 
+# "good luck" for the 8th iteration, and "Best School" for others.
+
+cnt=1  # Initialize cnt
+
+while [ $cnt -le 10 ]; do  # Loop until cnt is greater than 10
+    if [ $cnt -eq 4 ]; then  # Check if cnt is 4
+        echo "bad luck"  # Display "bad luck"
+    elif [ $cnt -eq 8 ]; then  # Check if cnt is 8
+        echo "good luck"  # Display "good luck"
+    else
+        echo "Best School"  # Display "Best School" for other cnt values
+    fi
+    ((cnt++))  # Increment cnt
+done
