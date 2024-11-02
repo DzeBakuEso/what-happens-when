@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Displays "To infinity and beyond" indefinitely, with a 2-second pause between each iteration
 
 while true; do
     echo "To infinity and beyond"
