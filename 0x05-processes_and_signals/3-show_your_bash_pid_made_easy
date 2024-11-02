@@ -1,0 +1,10 @@
+#!/usr/bin/env bash 
+
+# This loop through the directories in the /proc
+for pid in /proc/[0-9]*; do
+	#  This checks if thee command name contains "bash"
+	if grep -q "bash" "$pid/comm" 2>/dev/null; then
+		# This displays the pid and command name
+		echo "$(basename "$pid") bash"
+	fi
+done	
