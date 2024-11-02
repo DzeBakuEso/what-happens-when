@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Kills the process named '7-highlander'
+
 # Get the PID of the 7-highlander process
 pid=$(pgrep -f 7-highlander)
 
