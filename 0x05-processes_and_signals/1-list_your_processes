@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+# Displays a hierarchical list of all running processes with detailed information.
 
 ps -e -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command --forest
