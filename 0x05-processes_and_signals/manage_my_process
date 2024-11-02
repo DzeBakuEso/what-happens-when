@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script writes "I am alive!" to /tmp/my_process every 2 seconds.
+
+# Create or clear the output file using 'true' as a no-op command
+true > /tmp/my_process
+
+while true; do
+    echo "I am alive!" >> /tmp/my_process
+    sleep 2
+done
