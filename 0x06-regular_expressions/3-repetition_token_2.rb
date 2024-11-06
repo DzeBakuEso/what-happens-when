@@ -7,5 +7,5 @@ if ARGV.empty?
 end
 
 # Match "hbtn", "hbttn", "hbtttn", or "hbttttn"
-match = ARGV[0].scan(/^hbtt+n$/)
-puts match.join
+match = ARGV[0].scan(/^hbt+n$/)
+puts match.join unless match.empty?
