@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# This script displays all active IPv4 addresses on the server machine.
+# This script displays all active IPv4 addresses on the machine.
 
-# Here we use the ip command to list active IP addresses
-ip -4 -o addr show | awk '{print $4}' | cut -d/ -f1
+# Use ifconfig to display active IP addresses, filtering and formatting the output with grep and awk
+ifconfig | grep 'inet ' | awk '{print $2}'
 
