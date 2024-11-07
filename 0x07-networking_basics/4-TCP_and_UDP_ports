@@ -1,0 +1,4 @@
+#!/bin/bash
+# This script displays the listening sockets with PID and program name
+
+sudo netstat -tuln -p
