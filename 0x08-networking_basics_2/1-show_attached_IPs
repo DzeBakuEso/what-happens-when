@@ -1,20 +1,6 @@
 #!/usr/bin/env bash
-# This script modifies the /etc/hosts file to resolve 'localhost' to 127.0.0.2 and 'facebook.com' to 8.8.8.8.
+# This script displays all active IPv4 addresses on the server machine.
 
-# Define variables for IP and domain mappings
-LOCALHOST_IP="127.0.0.2"
-FACEBOOK_IP="8.8.8.8"
+# Here we use the ip command to list active IP addresses
+ip -4 -o addr show | awk '{print $4}' | cut -d/ -f1
 
-# Backup the original hosts file
-sudo cp /etc/hosts /etc/hosts.bak
-
-# Update the /etc/hosts file
-# Remove any existing entries for 'localhost' and 'facebook.com' to avoid duplicates
-sudo sed -i '/localhost/d' /etc/hosts
-sudo sed -i '/facebook.com/d' /etc/hosts
-
-# Add new entries to the hosts file
-echo "$LOCALHOST_IP localhost" | sudo tee -a /etc/hosts
-echo "$FACEBOOK_IP facebook.com" | sudo tee -a /etc/hosts
-
-echo "Configuration updated. Localhost resolves to $LOCALHOST_IP, and facebook.com resolves to $FACEBOOK_IP."
