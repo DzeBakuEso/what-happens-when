@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
-# This script updates the /etc/hosts file to change 'localhost' resolution to 127.0.0.2
-# and 'facebook.com' to 8.8.8.8.
+# This script modifies the /etc/hosts file to resolve 'localhost' to 127.0.0.2 and 'facebook.com' to 8.8.8.8.
 
-# Backup the current /etc/hosts file to revert if needed
+# Define variables for IP and domain mappings
+LOCALHOST_IP="127.0.0.2"
+FACEBOOK_IP="8.8.8.8"
+
+# Backup the original hosts file
 sudo cp /etc/hosts /etc/hosts.bak
 
-# Remove any existing entries for 'localhost' or 'facebook.com' to avoid duplicates
+# Update the /etc/hosts file
+# Remove any existing entries for 'localhost' and 'facebook.com' to avoid duplicates
 sudo sed -i '/localhost/d' /etc/hosts
 sudo sed -i '/facebook.com/d' /etc/hosts
 
-# Add new mappings for localhost and facebook.com
-echo "127.0.0.2 localhost" | sudo tee -a /etc/hosts
-echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts
+# Add new entries to the hosts file
+echo "$LOCALHOST_IP localhost" | sudo tee -a /etc/hosts
+echo "$FACEBOOK_IP facebook.com" | sudo tee -a /etc/hosts
 
-# Display confirmation message
-echo "Updated /etc/hosts: 'localhost' now resolves to 127.0.0.2 and 'facebook.com' to 8.8.8.8."
+echo "Configuration updated. Localhost resolves to $LOCALHOST_IP, and facebook.com resolves to $FACEBOOK_IP."
+
