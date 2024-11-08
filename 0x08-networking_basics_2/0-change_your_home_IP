@@ -17,5 +17,3 @@ sudo sed -i '/facebook.com/d' /etc/hosts
 echo "$LOCALHOST_IP localhost" | sudo tee -a /etc/hosts
 echo "$FACEBOOK_IP facebook.com" | sudo tee -a /etc/hosts
 
-echo "Configuration updated. Localhost resolves to $LOCALHOST_IP, and facebook.com resolves to $FACEBOOK_IP."
-
