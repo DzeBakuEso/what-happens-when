@@ -1,0 +1,51 @@
+## THE LINK TO THE SCREENSHOT OF TASK 0
+
+https://wbd.ms/share/v2/aHR0cHM6Ly93aGl0ZWJvYXJkLm1pY3Jvc29mdC5jb20vYXBpL3YxLjAvd2hpdGVib2FyZHMvcmVkZWVtLzUzYzMzOWZjNjA5NzQ1YzFiOTMyMzNjZDA5MmE1OGRkX0JCQTcxNzYyLTEyRTAtNDJFMS1CMzI0LTVCMTMxRjQyNEUzRF8wN2EyMDcwOS1hNDAwLTRlZGMtYmNhMS01N2Q4N2VmOGE2OGY=
+
+
+## 
+## Exaplanation Below 
+
+Web and Network Components Overview
+1. Server
+Definition:
+A server is a centralized computing system, either physical or virtual, that delivers services or resources to clients over a network. In this setup, the server consolidates the functions of hosting the web server, application server, database, and application files.
+Role in Infrastructure:
+The server acts as the core of the infrastructure, ensuring all necessary services are available for the website to function.
+________________________________________
+2. Domain Name
+Definition and Role:
+The domain name (www.foobar.com) serves as a user-friendly way for people to access the website. Instead of using an IP address like 8.8.8.8, the domain name is resolved to the server's IP through DNS, simplifying navigation.
+DNS Record Type:
+The www part of www.foobar.com is linked to an A (Address) record, which associates the domain name with the specific IP address of the server.
+________________________________________
+3. Web Server (Nginx)
+Role:
+The web server processes HTTP/HTTPS requests sent by users’ browsers. It delivers static content such as HTML, CSS, and JavaScript files directly. For dynamic content, it forwards requests to the application server for processing and returns the results to the user.
+________________________________________
+4. Application Server
+Role:
+This component manages the execution of business logic by running the application code. It processes requests forwarded from the web server, interacts with the database as needed, and sends the results back to the web server for user delivery.
+________________________________________
+5. Database (MySQL)
+Role:
+The database is responsible for managing data storage and retrieval. It ensures that all application data (e.g., user information, transaction records) is systematically stored and accessible when needed.
+________________________________________
+6. Communication Between Server and User
+Method:
+The server communicates with users’ browsers via the HTTP or HTTPS protocol. If HTTPS is used, communication is encrypted for security. Internally, components use protocols like TCP/IP to exchange information.
+________________________________________
+Identified Issues in the Original Setup
+1. Single Point of Failure (SPOF)
+Problem:
+Since all components are on one server, its failure would render the entire website unavailable.
+2. Maintenance Downtime
+Problem:
+Any updates, such as deploying new code or restarting a service (e.g., Nginx or MySQL), will disrupt the website’s availability temporarily.
+3. Scalability Challenges
+Problem:
+The server has limited resources (CPU, memory, and storage). As traffic increases, the server may become overwhelmed, causing slow response times or complete outages.
+________________________________________
+Customized and Authored by Dzeble Kwame Frank
+This customized explanation reflects a unique understanding of web infrastructure, incorporating my personal approach to avoiding redundancy and plagiarism. If you have further questions or need more elaboration, feel free to reach out!
+
