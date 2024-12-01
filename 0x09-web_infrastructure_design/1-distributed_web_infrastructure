@@ -1,0 +1,38 @@
+## LINK TO SCREENSHOT  
+https://wbd.ms/share/v2/aHR0cHM6Ly93aGl0ZWJvYXJkLm1pY3Jvc29mdC5jb20vYXBpL3YxLjAvd2hpdGVib2FyZHMvcmVkZWVtLzhhYTA3YTgwYzMyMjRkNzg4OWU1M2Q5MWQyZWZiNDg2X0JCQTcxNzYyLTEyRTAtNDJFMS1CMzI0LTVCMTMxRjQyNEUzRF8xNWYwMzM5MC1lOWQ4LTQyY2EtOWNmZC1lOWJkNGQ3OGZmMzY=
+
+## EXPLANATION OF DIAGRAM
+Load Balancer (HAProxy):
+I included a load balancer to ensure that incoming traffic is distributed evenly across servers. This prevents overloading a single server and makes the system more reliable and responsive.
+Web Server (Nginx):
+This is necessary to handle static files (like HTML, CSS, and JavaScript) and act as a reverse proxy to forward requests to the application server. It improves performance and ensures a better user experience.
+Application Server:
+The application server is where all the logic of the application runs. It processes dynamic requests and ensures the application functions as expected.
+Database (MySQL):
+The database stores all the important information the application needs to function, like user data or application settings. Without it, there’s no way to manage data effectively.
+________________________________________
+What distribution algorithm the load balancer is configured with and how it works:
+I set up the load balancer to use a Round Robin algorithm because it’s straightforward and distributes requests evenly among the servers. With this setup, each server takes turns handling requests, ensuring that all servers share the workload equally. Alternatively, I could use a Least Connections algorithm, which routes traffic to the server with the fewest active connections. This can be useful when some servers handle requests faster than others.
+________________________________________
+Is the load balancer enabling an Active-Active or Active-Passive setup?
+I chose an Active-Active setup because it allows all servers to work simultaneously, which improves performance and makes better use of available resources.
+Difference between Active-Active and Active-Passive:
+Active-Active: Both servers are active and handle traffic at the same time. If one fails, the other continues without interruptions.
+Active-Passive: Only one server is active while the other is on standby. The passive server takes over only when the active server fails. This setup is more focused on redundancy than performance.
+________________________________________
+How a database Primary-Replica (Master-Slave) cluster works:
+In this setup, the Primary (Master) database handles all write operations, such as adding or updating records. The Replica (Slave) database syncs with the Primary and can handle read-only operations to reduce the load on the Primary. This setup is useful for scaling and ensures that data is backed up in near real-time.
+________________________________________
+Difference between the Primary node and the Replica node in regard to the application:
+Primary Node: This is where all the changes to the database occur. It’s the central point for writing data.
+Replica Node: This is only for reading data. It can’t handle writes unless it’s promoted to Primary during a failover.
+________________________________________
+Issues with this infrastructure:
+1. Single Point of Failure (SPOF):
+If the load balancer fails, the entire system stops working. To prevent this, I would consider adding another load balancer in an Active-Passive configuration to handle failover.
+2. Security Issues:
+No firewall: Without a firewall, the servers are vulnerable to attacks. Adding a firewall will help block unauthorized traffic and protect sensitive data.
+No HTTPS: Traffic between users and the servers is not encrypted, leaving it exposed to interception. Enabling HTTPS with SSL/TLS will secure the connection.
+3. No Monitoring:
+Without monitoring, I can’t track server performance, errors, or traffic levels. I would add tools like Nagios, Prometheus, or Sumo Logic to keep an eye on system health and detect potential issues before they cause downtime.
+This design makes the system more efficient, but I would need to address these issues to ensure it’s robust and secure
