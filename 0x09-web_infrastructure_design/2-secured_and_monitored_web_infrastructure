@@ -1,0 +1,54 @@
+## THE LINK TO THE SCREENSHOT
+
+##THE EXPLANATION BELOW OF THE DIAGRAM IN THE SCREENSHOT
+
+Firewalls: I included firewalls to safeguard the entire system by blocking unwanted traffic and ensuring only authorized users can access the infrastructure. Each firewall works at different levels—for example, one may protect public-facing servers while another shields internal components like the database.
+SSL Certificate: Adding an SSL certificate ensures that all data between users and the website is encrypted. It’s essential for maintaining trust and keeping sensitive information secure. Nobody likes the idea of their data being intercepted.
+Monitoring Clients: I added monitoring clients to help keep an eye on how the system is performing. They gather data in real-time, so I can spot issues before they cause any serious problems, ensuring a smooth experience for everyone using the website.
+________________________________________
+What are firewalls for?
+Firewalls are like gatekeepers for the infrastructure. They:
+Block unwanted and harmful traffic, protecting servers from attacks.
+Allow only the right kind of traffic to pass through, like user requests to the website.
+Protect sensitive systems like the database, ensuring critical data stays safe.
+Close off unnecessary ports that hackers could exploit.
+________________________________________
+Why is the traffic served over HTTPS?
+Using HTTPS is non-negotiable for me. It:
+Encrypts communication between the user and the website, keeping data safe.
+Builds trust with users by showing the website is secure.
+Meets industry standards for security—users deserve that peace of mind.
+________________________________________
+What is monitoring used for?
+Monitoring is like having a dashboard for my infrastructure—it keeps everything under control. It:
+Tracks uptime to ensure the system is running smoothly.
+Detects bottlenecks or slowdowns in performance.
+Alerts me if something goes wrong, so I can fix it before users notice.
+Helps me optimize the infrastructure by showing how resources are being used.
+________________________________________
+How does the monitoring tool collect data?
+The monitoring tool collects data in different ways. For example:
+Agents installed on servers gather metrics like CPU usage or memory consumption.
+Logs from the application, web server, or database are analyzed.
+Data is sent to a centralized system where I can visualize it and track trends over time.
+________________________________________
+What to do if I want to monitor my web server’s QPS (Queries Per Second)?
+To monitor QPS, I’d:
+Enable the Nginx status module or use a monitoring tool like Prometheus.
+Configure the server to expose QPS metrics, so they can be tracked in real time.
+Set up a dashboard in a tool like Grafana to keep an eye on the numbers and get alerts if the load gets too high.
+________________________________________
+What are the issues with this infrastructure?
+Why is terminating SSL at the load balancer a problem?
+If the SSL encryption is terminated at the load balancer, the data between the load balancer and the servers isn’t encrypted. This leaves the system vulnerable to attacks if the internal network is compromised. To avoid this, I’d go for end-to-end encryption, ensuring HTTPS is used throughout.
+Why is having just one MySQL server for writes an issue?
+Relying on one MySQL server for writes creates a Single Point of Failure (SPOF). If that server goes down, no data can be written to the database, and the website functionality could be severely affected. To solve this, I’d set up a Primary-Replica cluster, where the Primary handles writes and Replicas handle reads, balancing the load and providing redundancy.
+Why is it bad for all servers to have the same components?
+Having a single server with a web server, application server, and database creates a lot of risks:
+If one server fails, everything goes down—web access, applications, and data.
+It limits how much I can scale—what if I need more database power but not more application servers?
+It makes the infrastructure harder to secure because a single breach could expose everything.
+To fix this, I’d split these roles across dedicated servers.
+________________________________________
+Written by Dzeble Kwame Frank
+Let me know if this works for you
