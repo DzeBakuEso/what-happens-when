@@ -1,0 +1,51 @@
+## BELOW IS THE LINK TO SCREENSHOT
+
+https://wbd.ms/share/v2/aHR0cHM6Ly93aGl0ZWJvYXJkLm1pY3Jvc29mdC5jb20vYXBpL3YxLjAvd2hpdGVib2FyZHMvcmVkZWVtL2E1NjE1NGI1Y2UzNzQzMjk4NzI2ODU4YWY2YTBlYzA3X0JCQTcxNzYyLTEyRTAtNDJFMS1CMzI0LTVCMTMxRjQyNEUzRF8yNWMyMjk0Zi04NzgyLTQxNWUtYjgzMC0wMjJmYzIxNmRiNzE=
+
+
+To scale the infrastructure, we are adding:
+
+1 Additional Server: To split the components (web server, application server, database) across individual servers.
+Clustered Load Balancers (HAProxy): Configure two HAProxy instances as a cluster to improve availability and distribute traffic efficiently.
+Infrastructure Design Overview
+The scaled-up infrastructure will have the following:
+
+Load Balancer Cluster: Two HAProxy instances configured to distribute traffic among servers.
+Web Server (Nginx): Dedicated server to handle static requests and forward dynamic requests.
+Application Server: Processes dynamic content and business logic.
+Database Server: Handles data storage and queries.
+Explanation of Components
+1. Load Balancer (HAProxy Cluster):
+
+Why Add It?
+To improve fault tolerance and ensure seamless traffic distribution. If one load balancer fails, the other can take over.
+
+How It Works:
+
+The load balancers monitor the health of downstream servers (web, application, database).
+They use algorithms like Round Robin (equal traffic distribution) or Least Connections (route to the least busy server).
+Cluster Setup:
+
+Active-Passive: One load balancer handles traffic while the other acts as a backup.
+Active-Active: Both handle traffic simultaneously, providing higher throughput.
+2. Web Server (Nginx):
+
+Why Add It?
+To handle static content like HTML, CSS, and JavaScript and forward dynamic requests to the application server.
+3. Application Server:
+
+Why Add It?
+To handle business logic and API processing separately from static file delivery, reducing server load.
+4. Database Server (MySQL):
+
+Why Add It?
+Isolating the database ensures data integrity, security, and better scalability.
+Key Benefits of Splitting Components
+Improved Performance: Each server focuses on its specific tasks, optimizing resources.
+Fault Isolation: Issues with one component don’t cascade to others.
+Scalability: Easier to add more servers as needed.
+Potential Challenges
+Configuration Complexity: Managing multiple servers and clustered load balancers requires expertise.
+Networking Overhead: Increased communication between servers might slightly affect performance.
+Cost: More servers mean higher operational costs.
+
