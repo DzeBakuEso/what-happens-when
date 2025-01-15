@@ -8,12 +8,13 @@ FACEBOOK_IP="8.8.8.8"
 # Backup the original hosts file
 sudo cp /etc/hosts /etc/hosts.bak
 
-# Update the /etc/hosts file
-# Remove any existing entries for 'localhost' and 'facebook.com' to avoid duplicates
+# Remove any existing entries for 'localhost' and 'facebook.com'
 sudo sed -i '/localhost/d' /etc/hosts
 sudo sed -i '/facebook.com/d' /etc/hosts
 
 # Add new entries to the hosts file
 echo "$LOCALHOST_IP localhost" | sudo tee -a /etc/hosts
 echo "$FACEBOOK_IP facebook.com" | sudo tee -a /etc/hosts
+
+echo "Configuration updated. Localhost resolves to $LOCALHOST_IP, and facebook.com resolves to $FACEBOOK_IP."
 
