@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Script to configure Nginx to redirect /redirect_me to a specific URL
+
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# Install Nginx if not already installed
+apt-get update -y
+apt-get install -y nginx
+
+# Define the redirection block
+REDIRECT_BLOCK="location /redirect_me {\n    return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n}"
+
+# Append the redirection block to the default configuration
+sed -i "/server_name _;/a \\$REDIRECT_BLOCK" /etc/nginx/sites-available/default
+
+# Restart Nginx service
+service nginx restart
