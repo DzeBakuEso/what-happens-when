@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# This script installs and configures HAProxy on a new Ubuntu machine
+
+# Update package list and install HAProxy
+sudo apt update
+sudo apt install -y haproxy
+
+# Configure HAProxy to distribute traffic between web-01 and web-02
+echo "global
+    log 127.0.0.1 local0
+    chroot /var/lib/haproxy
+    stats timeout 30s
+    user haproxy
+    group haproxy
+    daemon
+
+defaults
+    log     global
+    option  httplog
+    option  dontlognull
+    timeout connect 5000ms
+    timeout client  50000ms
+    timeout server  50000ms
+
+frontend http_front
+    bind *:80
+    acl url_static path_beg /static /images /js /css
+    use_backend static_back if url_static
+    default_backend web_servers
+
+backend web_servers
+    balance roundrobin
+    server web-01 100.25.103.0:80 check
+    server web-02 100.26.170.186:80 check" | sudo tee /etc/haproxy/haproxy.cfg
+
+# Enable and start HAProxy service
+sudo systemctl enable haproxy
+sudo systemctl start haproxy
