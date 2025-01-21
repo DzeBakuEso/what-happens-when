@@ -1,0 +1,6 @@
+#!/bin/bash
+service nginx start
+service nginx status
+systemctl restart nginx
+service nginx status
+curl -s 0:80
