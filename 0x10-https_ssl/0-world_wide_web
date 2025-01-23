@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# This script audits the DNS records of subdomains for a given domain.
+
+# Function to query and display subdomain information
+query_subdomain() {
+    local subdomain="$1"
+    local domain="$2"
+    local record
+    local destination
+
+    # Use dig to fetch DNS record information
+    record=$(dig "${subdomain}.${domain}" +short | awk 'NR==1 {print}')
+    if [[ -z "$record" ]]; then
+        echo "The subdomain ${subdomain} does not exist or is unreachable."
+    else
+        echo "The subdomain ${subdomain} is a A record and points to ${record}"
+    fi
+}
+
+# Main script logic
+domain="$1"
+subdomain="$2"
+
+# Check if domain is provided
+if [[ -z "$domain" ]]; then
+    echo "Error: Domain is required."
+    exit 1
+fi
+
+# If a specific subdomain is provided, query only that subdomain
+if [[ -n "$subdomain" ]]; then
+    query_subdomain "$subdomain" "$domain"
+else
+    # Query default subdomains: www, lb-01, web-01, web-02
+    for default_subdomain in www lb-01 web-01 web-02; do
+        query_subdomain "$default_subdomain" "$domain"
+    done
+fi
